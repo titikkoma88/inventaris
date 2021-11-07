@@ -1,0 +1,40 @@
+<a href="../barang/tampil_semua_barang.php">Semua Barang</a>
+	<form method="POST">
+		<input type="text" name="keyword">
+		<input type="submit" name="cari_submit" value="Cari">
+	</form>
+	<br>
+
+	<form method="POST">
+		<input type="text" name="add_jenis">
+		<input type="submit" name="submit_jenis" value="Tambah">
+	</form>
+	<br>
+	<table border="1">
+		<tr>
+			<th>NO</th>
+			<th>Nama Jenis</th>
+			<th>Opsi</th>
+		</tr>
+			<?php 
+				$no = 1;
+				@$keyword = $_POST['keyword'];
+					if($keyword !=''){
+						$jenis = mysqli_query($conn, "SELECT * FROM jenis WHERE nm_jenis LIKE '%$keyword%'");
+					}else{
+						$jenis = mysqli_query($conn, "SELECT * FROM jenis");
+					}
+				
+				while($data = mysqli_fetch_array($jenis)){			
+			 ?>
+		<tr>
+			<td><?= $no++?></td>
+			<td><?= $data['nm_jenis'];?></td>
+			<td>
+				<a href="#">Detail</a>|
+				<a href="hapus_jenis.php?id_jenis=<?= $data['id_jenis'];?>">Hapus</a>|
+				<a href="edit_jenis.php?id_jenis=<?= $data['id_jenis'];?>">Edit</a>
+			</td>
+		</tr>
+			<?php } ?>
+	</table>

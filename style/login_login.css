@@ -1,0 +1,58 @@
+body {
+	padding: 10px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.awesome-form {
+
+	input {
+		background: none;
+		border: solid 2px rgb(17, 144, 190);
+		box-shadow: none;
+		color: rgb(17, 144, 190);
+		
+		&:focus,
+		&:active {
+			 outline: none;
+        box-shadow: none;
+        background: none;
+		}
+
+		&[type="text"],
+		&[type="email"] {
+			border-width: 0 0 2px 0;
+		}
+
+		&[type="submit"] {
+			&:active {
+				color: #fff;
+				background: rgb(17, 144, 190);
+			}
+		}
+			
+	}
+
+	.input-group {
+		position: relative;
+		
+		label {
+			position: absolute;
+			top: 0.5rem;
+			left: 1.4375rem;
+			pointer-events: none;
+			font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+			font-style: italic;
+			color: #999;
+			-webkit-transition: all 0.15s ease-out 0s;
+			transition: all 0.15s ease-out 0s;
+		}
+
+		input:focus + label,
+		input.has-content + label {
+			top: -0.5rem;
+			font-size: 0.7rem;
+			color: rgb(17, 144, 190);
+		}
+	}
+
+}
